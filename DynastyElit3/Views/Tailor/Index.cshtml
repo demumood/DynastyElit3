@@ -1,0 +1,49 @@
+﻿@model List<DynastyElit3.Models.ViewModels.TailorViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="AddEdit" asp-controller="Tailor">Create New</a>
+</p>
+@*<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model[0].ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].isActive)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>*@
+<div class="card-deck">
+@foreach (var item in Model) {
+        <div class="card m-3">
+            <div class="card-header">
+                @Html.DisplayFor(modelItem => item.Name)
+            </div>
+            <img class="card-img" src ="~/images/noimage.jpg" />
+            <div class="">
+                @Html.DisplayFor(modelItem => item.isActive)
+            </div>
+            <div class="card-footer text-center" >
+                @Html.ActionLink("Edit", "Edit", new {  id=item.ID  }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })            
+            </div>
+
+        </div>
+        <br />
+}
+</div>
+    @*</tbody>
+</table>*@
